@@ -16,16 +16,25 @@ AWS.config.update({
 const ec2 = new AWS.EC2({ apiVersion: '2016-11-15' });
 const params = {};
 
-app.get('/', function (req, res) {
+app.get('/network', function (req, res) {
   ec2.describeSubnets(params, async (err, data) => {
     if (err) {
       console.log(err);
     }
     else {
       const results = await data.Subnets;
-      res.render('home', { results })
+      res.render('network', { results })
     }
   });
+})
+
+
+app.get('/iam', function (req, res) {
+  res.render('iam')
+})
+
+app.get('/', function (req, res) {
+    res.render('home')
 })
 
 app.listen(3000)
