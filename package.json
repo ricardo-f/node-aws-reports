@@ -1,0 +1,32 @@
+{
+  "name": "aws-reports",
+  "version": "1.0.0",
+  "description": "Custom reports from aws with data fetched through aws-sdk for nodejs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "localdev": "nodemon ./index.js localhost 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardo-f/node-aws-reports.git"
+  },
+  "keywords": [
+    "aws"
+  ],
+  "author": "Ricardo Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardo-f/node-aws-reports/issues"
+  },
+  "homepage": "https://github.com/ricardo-f/node-aws-reports#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1210.0",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

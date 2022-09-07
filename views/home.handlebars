@@ -1,0 +1,26 @@
+<h1>AWS Network info</h1>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>VPC ID</th>
+            <th>Subnet ID</th>
+            <th>Availability Zone</th>
+            <th>Subnet CIDR</th>
+            <th>Available IPs</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each results}}
+        <tr>
+            <td>{{this.VpcId}}</td>
+            <td>{{this.SubnetId }}</td>
+            <td>{{this.AvailabilityZone}}</td>
+            <td>{{this.CidrBlock}}</td>
+            <td>{{this.AvailableIpAddressCount}}</td>
+        </tr>
+        {{/each}}
+        <tr>
+        <tbody>
+    </table>
+</div>
