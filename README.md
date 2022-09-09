@@ -25,7 +25,7 @@ A more detailed How will be here
 - Share knowledge (that's why is public).
 
 ## Wanna help?
-Soon will be a contrib file around here, for now open a PR if have any idea or improvement sugestion.
+**Read the [contrib file](CONTRIBUTING.md), It's still a draft**
 
 ### Extra docs and ref:
 - [aws-sdk](https://www.npmjs.com/package/aws-sdk)
