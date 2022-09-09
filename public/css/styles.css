@@ -12,20 +12,34 @@ body {
 
 h1 {
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: #fff;
-  padding: 30px 0;
+  padding: 1px 0;
 }
 
 h2 {
   text-align: center;
   color: #fff;
+  padding: 1px 0;
+}
+
+/* HOME Image stuff */
+
+.img-circle {
+  width: 700px;
+  height: 700px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: solid 5px #C9B037;
+  background-image: url(../images/bear-map.png);
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Filters styles */
 
-div.region-filter{
+div.region-filter {
   margin: 10px 70px 10px;
   padding: auto;
 }
