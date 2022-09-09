@@ -10,13 +10,35 @@ body {
   background: rgba(71, 147, 227, 1);
 }
 
-h1,
-h2 {
+h1 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: white;
+  color: #fff;
   padding: 30px 0;
+}
+
+h2 {
+  text-align: center;
+  color: #fff;
+}
+
+/* Filters styles */
+
+div.region-filter{
+  margin: 10px 70px 10px;
+  padding: auto;
+}
+
+div .region-filter label {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold
+}
+
+div.region-filter select {
+  border-radius: 5px;
+  background-color: #fff
 }
 
 /* The side navigation menu */
@@ -95,7 +117,7 @@ div.content {
   width: 100%;
   max-width: 100%;
   white-space: nowrap;
-  background-color: white;
+  background-color: #fff;
 }
 
 .fl-table td,
@@ -137,7 +159,7 @@ div.content {
     display: block;
     text-align: right;
     font-size: 11px;
-    color: white;
+    color: #fff;
     padding: 0 0 10px;
   }
 

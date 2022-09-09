@@ -9,25 +9,24 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 app.use(express.static('public'))
 
-AWS.config.update({
-  region: 'us-east-1'
-});
+AWS.config.update({region: 'us-east-1'});
 
-const ec2 = new AWS.EC2({ apiVersion: '2016-11-15' });
 const params = {};
 
-app.get('/network', function (req, res) {
+app.get('/network/:region', function (req, res) {
+  const region = req.params.region;
+  const ec2 = new AWS.EC2({ apiVersion: '2016-11-15', region: region });
   ec2.describeSubnets(params, async (err, data) => {
     if (err) {
       console.log(err);
     }
     else {
+      const subnetCount = await data.Subnets.length;
       const results = await data.Subnets;
-      res.render('network', { results })
+      res.render('network', { results, region, subnetCount})
     }
   });
 })
-
 
 app.get('/iam', function (req, res) {
   res.render('iam')
