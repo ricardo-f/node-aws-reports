@@ -1,0 +1,45 @@
+<h1>AWS Subnets info</h1>
+<h2>You have {{dbCount}} RDS instances across the {{region}}</h2>
+<div class="region-filter">
+    <label for="region-filter">Region:</label>
+    <select onchange="document.location.href = '/rds/instances/' + this.value" name="region" id="region">
+        <option value="" selected>Choose a region</option>
+        <option value="us-east-1">Us-East-1</option>
+        <option value="sa-east-1">Sa-East-1</option>
+    </select>
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <tr>
+                <th>Admin UserName</th>
+                <th>RDS Name</th>
+                <th>Type</th>
+                <th>Engine</th>
+                <th>Engine version</th>
+                <th>Storage size (GiB)</th>
+                <th>Storage Type</th>
+                <th>DB Availability Zone</th>
+                <th>Is Multi AZ? </th>
+                <th>Public accessible?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each results}}
+            <tr>
+                <td>{{this.MasterUsername}}</td>
+                <td>{{this.DBInstanceIdentifier}}</td>
+                <td>{{this.DBInstanceClass }}</td>
+                <td>{{this.Engine}}</td>
+                <td>{{this.EngineVersion}}</td>
+                <td>{{this.AllocatedStorage}}</td>
+                <td>{{this.StorageType}}</td>
+                <td>{{this.AvailabilityZone}}</td>
+                <td>{{this.MultiAZ}}</td>
+                <td>{{this.PubliclyAccessible}}</td>
+            </tr>
+            {{/each}}
+            <tr>
+        <tbody>
+    </table>
+</div>

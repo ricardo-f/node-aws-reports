@@ -41,6 +41,21 @@ app.get('/iam', function (req, res) {
   });
 })
 
+app.get('/rds/instances/:region', function (req, res) {
+  const region = req.params.region;
+  const rds = new AWS.RDS({ apiVersion: '2014-10-31', region: region });
+  rds.describeDBInstances(params, async (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      const dbCount = await data.DBInstances.length;
+      const results = await data.DBInstances;
+      res.render('rdsInstances', { results, region, dbCount})
+    }
+  });
+})
+
 app.get('/', function (req, res) {
   res.render('home')
 })
