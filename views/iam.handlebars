@@ -1,1 +1,25 @@
-<h1>ideas for IAM will be dev here</h1>
+<h1>List of IAM user</h1>
+<h2>You have {{userCount}} IAM users</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>User Id</th>
+                <th>Create Date</th>
+                <th>Password Last Used</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each results}}
+            <tr>
+                <td>{{this.UserName}}</td>
+                <td>{{this.UserId }}</td>
+                <td>{{this.CreateDate}}</td>
+                <td>{{this.PasswordLastUsed}}</td>
+            </tr>
+            {{/each}}
+            <tr>
+        <tbody>
+    </table>
+</div>
