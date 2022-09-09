@@ -9,7 +9,7 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 app.use(express.static('public'))
 
-AWS.config.update({region: 'us-east-1'});
+AWS.config.update({ region: 'us-east-1' });
 
 const params = {};
 
@@ -23,17 +23,26 @@ app.get('/network/:region', function (req, res) {
     else {
       const subnetCount = await data.Subnets.length;
       const results = await data.Subnets;
-      res.render('network', { results, region, subnetCount})
+      res.render('network', { results, region, subnetCount })
     }
   });
 })
 
 app.get('/iam', function (req, res) {
-  res.render('iam')
+  const iam = new AWS.IAM({ apiVersion: '2010-05-08' });
+  iam.listUsers(params, async (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const userCount = await data.Users.length;
+      const results = await data.Users;
+      res.render('iam', { results, userCount })
+    }
+  });
 })
 
 app.get('/', function (req, res) {
-    res.render('home')
+  res.render('home')
 })
 
 app.listen(3000)
