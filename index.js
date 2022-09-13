@@ -13,7 +13,7 @@ AWS.config.update({ region: 'us-east-1' });
 
 const params = {};
 
-app.get('/network/:region', function (req, res) {
+app.get('/subnets/:region', function (req, res) {
   const region = req.params.region;
   const ec2 = new AWS.EC2({ apiVersion: '2016-11-15', region: region });
   ec2.describeSubnets(params, async (err, data) => {
@@ -23,7 +23,22 @@ app.get('/network/:region', function (req, res) {
     else {
       const subnetCount = await data.Subnets.length;
       const results = await data.Subnets;
-      res.render('network', { results, region, subnetCount })
+      res.render('subnetwork', { results, region, subnetCount })
+    }
+  });
+})
+
+app.get('/network/:region', function (req, res) {
+  const region = req.params.region;
+  const ec2 = new AWS.EC2({ apiVersion: '2016-11-15', region: region });
+  ec2.describeVpcs(params, async (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      const vpcCount = await data.Vpcs.length;
+      const results = await data.Vpcs;
+      res.render('network', { results, region, vpcCount })
     }
   });
 })
