@@ -1,8 +1,8 @@
-<h1>AWS VPC info</h1>
-<h2>You have {{vpcCount}} VPCs across the {{region}}</h2>
+<h1>AWS Subnets info</h1>
+<h2>You have {{subnetCount}} subnets across the {{region}}</h2>
 <div class="region-filter">
     <label for="region-filter">Region:</label>
-    <select onchange="document.location.href = '/network/' + this.value" name="region" id="region">
+    <select onchange="document.location.href = '/subnets/' + this.value" name="region" id="region">
         <option value="" selected>Choose a region</option>
         <option value="us-east-1">Us-East-1</option>
         <option value="sa-east-1">Sa-East-1</option>
@@ -12,19 +12,21 @@
     <table class="fl-table">
         <thead>
             <tr>
+                <th>Subnet ID</th>
+                <th>Subnet CIDR</th>
+                <th>Available IPs</th>
+                <th>Availability Zone</th>
                 <th>VPC ID</th>
-                <th>CIDR Block</th>
-                <th>Default?</th>
-                <th>State</th>
             </tr>
         </thead>
         <tbody>
             {{#each results}}
             <tr>
-                <td>{{this.VpcId}}</td>
+                <td>{{this.SubnetId }}</td>
                 <td>{{this.CidrBlock}}</td>
-                <td>{{this.IsDefault}}</td>
-                <td>{{this.State}}</td>
+                <td>{{this.AvailableIpAddressCount}}</td>
+                <td>{{this.AvailabilityZone}}</td>
+                <td>{{this.VpcId}}</td>
             </tr>
             {{/each}}
             <tr>
