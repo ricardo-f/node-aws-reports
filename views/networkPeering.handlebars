@@ -1,0 +1,31 @@
+<h1>AWS VPC Peering info</h1>
+<h2>You have {{peeringCount}} pering in {{region}} region</h2>
+<div class="region-filter">
+    <label for="region-filter">Region:</label>
+    <select onchange="document.location.href = '/network/' + this.value + '/peering'" name="region" id="region">
+        <option value="" selected>Choose a region</option>
+        <option value="us-east-1">Us-East-1</option>
+        <option value="sa-east-1">Sa-East-1</option>
+    </select>
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <tr>
+                <th>Peering Id</th>
+                <th>Owner Id</th>
+                <th>VPC Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each results}}
+            <tr>
+                <td>{{this.VpcPeeringConnectionId}}</td>
+                <td>{{this.RequesterVpcInfo.OwnerId }}</td>
+                <td>{{this.RequesterVpcInfo.VpcId}}</td>
+            </tr>
+            {{/each}}
+            <tr>
+        <tbody>
+    </table>
+</div>

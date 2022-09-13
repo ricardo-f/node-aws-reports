@@ -28,6 +28,21 @@ app.get('/network/:region', function (req, res) {
   });
 })
 
+app.get('/network/:region/peering', function (req, res) {
+  const region = req.params.region;
+  const ec2 = new AWS.EC2({ apiVersion: '2016-11-15', region: region });
+  ec2.describeVpcPeeringConnections(params, async (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      const peeringCount = await data.VpcPeeringConnections.length;
+      const results = await data.VpcPeeringConnections;
+      res.render('networkPeering', { results, region, peeringCount })
+    }
+  });
+})
+
 app.get('/iam', function (req, res) {
   const iam = new AWS.IAM({ apiVersion: '2010-05-08' });
   iam.listUsers(params, async (err, data) => {
